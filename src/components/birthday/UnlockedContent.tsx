@@ -51,6 +51,16 @@ export function UnlockedContent({ recipientName, personalMessage, audioUrl }: Un
     '/photos/bg-10.jpg',
   ];
 
+  // Custom captions for gallery photos - EDIT THESE to personalize!
+  const galleryCaptions = [
+    'First Date 💕',
+    'Our Adventure',
+    'Laughter Together',
+    'Sweet Moments',
+    'Making Memories',
+    'Forever Us ❤️',
+  ];
+
   // Collage layout: random positions, sizes, and rotations for organic feel
   const collagePositions = [
     { left: '5%', top: '10%', width: '200px', height: '250px', rotate: -8 },
@@ -319,7 +329,7 @@ export function UnlockedContent({ recipientName, personalMessage, audioUrl }: Un
                   className="absolute inset-0 bg-gradient-to-t from-rose/60 to-transparent flex items-end justify-center p-4"
                 >
                   <p className="text-white text-sm font-medium" style={{ fontFamily: 'Manrope, sans-serif' }}>
-                    Memory {index}
+                    {galleryCaptions[index - 1]}
                   </p>
                 </motion.div>
               </motion.div>
