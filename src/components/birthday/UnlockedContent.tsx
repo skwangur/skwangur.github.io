@@ -54,9 +54,9 @@ export function UnlockedContent({ recipientName, personalMessage, audioUrl }: Un
   // Custom captions for gallery photos - EDIT THESE to personalize!
   const galleryCaptions = [
     'First Date 💕',
-    'First Movie Date 🎬',
-    'Meeting My Parents',
     'Meeting Your Parents',
+    'First Movie Date 🎬',
+    'Meeting My Mom',
     'Before You Start Working',
     'My Birthday ❤️',
   ];
