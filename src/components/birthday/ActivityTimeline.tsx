@@ -1,12 +1,12 @@
 import { motion } from 'framer-motion';
-import { Clock, Coffee, Music, Cake, Star } from 'lucide-react';
+import { Clock, Coffee, Music, Cake, Star, Car, Utensils, Camera, Heart } from 'lucide-react';
 import { useState } from 'react';
 
 interface Activity {
   time: string;
   title: string;
   description: string;
-  icon: 'clock' | 'coffee' | 'music' | 'cake' | 'star';
+  icon: 'clock' | 'coffee' | 'music' | 'cake' | 'star' | 'car' | 'utensils' | 'camera' | 'heart';
 }
 
 interface ActivityTimelineProps {
@@ -20,6 +20,10 @@ const iconMap = {
   music: Music,
   cake: Cake,
   star: Star,
+  car: Car,
+  utensils: Utensils,
+  camera: Camera,
+  heart: Heart,
 };
 
 export function ActivityTimeline({ activities, delay = 0.2 }: ActivityTimelineProps) {
