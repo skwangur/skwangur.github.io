@@ -243,20 +243,10 @@ export function ProposalStage({ recipientName = "My Love" }: ProposalStageProps)
                                     initial={{ opacity: 0 }}
                                     animate={{ opacity: 1 }}
                                     transition={{ delay: 0.5 }}
-                                    className="text-xl sm:text-2xl text-charcoal/70 mb-4"
+                                    className="text-xl sm:text-2xl text-charcoal/70 px-4"
                                     style={{ fontFamily: 'Newsreader, serif' }}
                                 >
-                                    No need to answer... 😊
-                                </motion.p>
-
-                                <motion.p
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    transition={{ delay: 0.8 }}
-                                    className="text-lg sm:text-xl text-charcoal/60"
-                                    style={{ fontFamily: 'Newsreader, serif', fontStyle: 'italic' }}
-                                >
-                                    Just screenshot this! 📸
+                                    Awww, you'll always be my Valentine. No pressure, I just hope you know how special you are.
                                 </motion.p>
                             </motion.div>
                         ) : (
@@ -326,6 +316,83 @@ export function ProposalStage({ recipientName = "My Love" }: ProposalStageProps)
                         </motion.p>
                     </motion.div>
                 ) : (
+                    <motion.div
+                        key="answer"
+                        initial={{ opacity: 0, scale: 0.5 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.8 }}
+                        className="text-center relative z-10 max-w-4xl px-4"
+                    >
+                        {/* Bubu & Dudu GIF */}
+                        <motion.div
+                            initial={{ scale: 0 }}
+                            animate={{ scale: 1, rotate: [0, 5, -5, 0] }}
+                            transition={{ duration: 0.8, rotate: { duration: 0.6, delay: 0.5 } }}
+                            className="mb-8 flex justify-center"
+                        >
+                            <img 
+                                src="https://media.tenor.com/images/f4b073b0e0c4c7d8f7e1c2a9c6b3d5e4/tenor.gif" 
+                                alt="Bubu and Dudu Happy"
+                                className="w-full max-w-md rounded-3xl shadow-2xl border-4 border-rose/30"
+                            />
+                        </motion.div>
+
+                        <motion.h1
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.3 }}
+                            className="text-5xl sm:text-6xl md:text-7xl mb-8 bg-gradient-to-r from-rose via-rose to-gold bg-clip-text text-transparent leading-relaxed"
+                            style={{ fontFamily: 'Fraunces, serif', fontWeight: 700 }}
+                        >
+                            See you on Valentine's Day Nicole!
+                        </motion.h1>
+
+                        <motion.p
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.5 }}
+                            className="text-3xl sm:text-4xl text-rose mb-8"
+                            style={{ fontFamily: 'Newsreader, serif', fontWeight: 600 }}
+                        >
+                            You made me the happiest person! 💕
+                        </motion.p>
+
+                        <motion.p
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.8 }}
+                            className="text-lg sm:text-xl text-charcoal/60 italic"
+                            style={{ fontFamily: 'Newsreader, serif' }}
+                        >
+                            📸 Screenshot this moment!
+                        </motion.p>
+
+                        {/* Floating hearts celebration */}
+                        {[...Array(20)].map((_, i) => (
+                            <motion.div
+                                key={i}
+                                initial={{ opacity: 0, y: 0 }}
+                                animate={{
+                                    opacity: [0, 1, 0],
+                                    y: [0, -300],
+                                    x: [0, (Math.random() - 0.5) * 200],
+                                }}
+                                transition={{
+                                    duration: 3 + Math.random() * 2,
+                                    repeat: Infinity,
+                                    delay: i * 0.1,
+                                }}
+                                className="absolute"
+                                style={{
+                                    left: `${Math.random() * 100}%`,
+                                    bottom: 0,
+                                }}
+                            >
+                                <Heart className="w-6 h-6 text-rose fill-rose" />
+                            </motion.div>
+                        ))}
+                    </motion.div>
                     <motion.div
                         key="celebration"
                         initial={{ opacity: 0, scale: 0.5 }}
