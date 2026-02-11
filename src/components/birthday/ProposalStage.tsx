@@ -239,25 +239,6 @@ export function ProposalStage({ recipientName = "My Love" }: ProposalStageProps)
                                     You will always be my Valentine 💕
                                 </motion.h2>
 
-                                <motion.p
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    transition={{ delay: 0.5 }}
-                                    className="text-xl sm:text-2xl text-charcoal/70 mb-4"
-                                    style={{ fontFamily: 'Newsreader, serif' }}
-                                >
-                                    No need to answer... 😊
-                                </motion.p>
-
-                                <motion.p
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    transition={{ delay: 0.8 }}
-                                    className="text-lg sm:text-xl text-charcoal/60"
-                                    style={{ fontFamily: 'Newsreader, serif', fontStyle: 'italic' }}
-                                >
-                                    Just screenshot this! 📸
-                                </motion.p>
                             </motion.div>
                         ) : (
                             /* Buttons */
