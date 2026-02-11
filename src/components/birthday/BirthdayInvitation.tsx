@@ -14,7 +14,7 @@ const birthdayData = {
   year: 2025,
   venue: "Genki Sushi, SM Megamall",
   address: "SM Megamall, Mandaluyong",
-  pickupLocation: "San Miguel Logistics",
+  pickupLocation: "San Miguel Logistics, Pasig",
   activities: [
     {
       time: "5:30 PM",
