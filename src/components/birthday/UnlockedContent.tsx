@@ -37,18 +37,18 @@ export function UnlockedContent({ recipientName, personalMessage, audioUrl }: Un
     }
   }, [audioUrl]);
 
-  // Sample photos for collage - replace these with your actual photo URLs
+  // Background photos - replace these with your actual photo paths
   const photos = [
-    'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=600&q=80',
-    'https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=600&q=80',
-    'https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=600&q=80',
-    'https://images.unsplash.com/photo-1481391319762-47dff72954d9?w=600&q=80',
-    'https://images.unsplash.com/photo-1530103862676-de8ec2ea082f?w=600&q=80',
-    'https://images.unsplash.com/photo-1467810563316-b5476525c0f9?w=600&q=80',
-    'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=600&q=80',
-    'https://images.unsplash.com/photo-1518568814500-bf0f8d125f46?w=600&q=80',
-    'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=600&q=80',
-    'https://images.unsplash.com/photo-1502791451862-7bd8c1df43a7?w=600&q=80',
+    '/photos/bg-1.jpg',
+    '/photos/bg-2.jpg',
+    '/photos/bg-3.jpg',
+    '/photos/bg-4.jpg',
+    '/photos/bg-5.jpg',
+    '/photos/bg-6.jpg',
+    '/photos/bg-7.jpg',
+    '/photos/bg-8.jpg',
+    '/photos/bg-9.jpg',
+    '/photos/bg-10.jpg',
   ];
 
   // Collage layout: random positions, sizes, and rotations for organic feel
@@ -84,7 +84,7 @@ export function UnlockedContent({ recipientName, personalMessage, audioUrl }: Un
             key={index}
             initial={{ opacity: 0, scale: 0, rotate: 0 }}
             animate={{
-              opacity: [0.12, 0.18, 0.12],
+              opacity: [0.25, 0.35, 0.25], // Increased opacity for better visibility
               scale: 1,
               rotate: collagePositions[index].rotate
             }}
@@ -119,8 +119,8 @@ export function UnlockedContent({ recipientName, personalMessage, audioUrl }: Un
             />
           </motion.div>
         ))}
-        {/* Gradient overlay for readability - softer blend */}
-        <div className="absolute inset-0 bg-gradient-to-br from-cream/92 via-blush/88 to-cream/92 backdrop-blur-[2px]" />
+        {/* Gradient overlay for readability - lighter for more photo visibility */}
+        <div className="absolute inset-0 bg-gradient-to-br from-cream/85 via-blush/80 to-cream/85 backdrop-blur-[1px]" />
       </div>
 
       {/* Audio Element */}
@@ -306,13 +306,7 @@ export function UnlockedContent({ recipientName, personalMessage, audioUrl }: Un
                 className="aspect-square rounded-3xl bg-gradient-to-br from-blush/40 to-cream/60 border-2 border-gold/30 shadow-[0_6px_30px_rgba(0,0,0,0.08)] cursor-pointer overflow-hidden group relative"
               >
                 <motion.img
-                  src={`https://images.unsplash.com/photo-${index === 1 ? '1464366400600-7168b8af9bc3' :
-                    index === 2 ? '1501281668745-f7f57925c3b4' :
-                      index === 3 ? '1513542789411-b6a5d4f31634' :
-                        index === 4 ? '1481391319762-47dff72954d9' :
-                          index === 5 ? '1530103862676-de8ec2ea082f' :
-                            '1467810563316-b5476525c0f9'
-                    }?w=600&q=80`}
+                  src={`/photos/gallery-${index}.jpg`}
                   alt={`Memory ${index}`}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   whileHover={{ scale: 1.1 }}
