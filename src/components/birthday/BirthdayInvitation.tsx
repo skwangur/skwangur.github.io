@@ -44,7 +44,8 @@ const birthdayData = {
   password: "Toddler",
   passwordHint: "Unang tawag ko sayo",
   recipientName: "Nicole lang",
-  personalMessage: `On this special day, I wanted to create something as beautiful as you are.\n\nEvery moment with you is a celebration, but today is extra special because it's the day the world was blessed with your presence.\n\nGet ready for a night filled with love, laughter, and memories we'll treasure forever.\n\nHappy Birthday, my love. ❤️`,
+  personalMessage: `Happiest Birthday, Nicole! I hope you never lose your smile, even when the world gets really tough.`,
+  audioUrl: "/birthday-audio.m4a",
 };
 
 export function BirthdayInvitation() {
@@ -121,7 +122,7 @@ export function BirthdayInvitation() {
             <UnlockedContent
               recipientName={birthdayData.recipientName}
               personalMessage={birthdayData.personalMessage}
-              audioUrl={audioUrl}
+              audioUrl={birthdayData.audioUrl}
             />
           </motion.div>
         )}
