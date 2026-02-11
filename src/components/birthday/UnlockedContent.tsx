@@ -94,7 +94,7 @@ export function UnlockedContent({ recipientName, personalMessage, audioUrl }: Un
             key={index}
             initial={{ opacity: 0, scale: 0, rotate: 0 }}
             animate={{
-              opacity: [0.25, 0.35, 0.25], // Increased opacity for better visibility
+              opacity: [0.35, 0.45, 0.35], // Increased opacity for more visibility
               scale: 1,
               rotate: collagePositions[index].rotate
             }}
@@ -130,7 +130,7 @@ export function UnlockedContent({ recipientName, personalMessage, audioUrl }: Un
           </motion.div>
         ))}
         {/* Gradient overlay for readability - lighter for more photo visibility */}
-        <div className="absolute inset-0 bg-gradient-to-br from-cream/85 via-blush/80 to-cream/85 backdrop-blur-[1px]" />
+        <div className="absolute inset-0 bg-gradient-to-br from-cream/75 via-blush/70 to-cream/80 backdrop-blur-[1px]" />
       </div>
 
       {/* Audio Element */}
@@ -319,6 +319,7 @@ export function UnlockedContent({ recipientName, personalMessage, audioUrl }: Un
                   src={`/Gallery/gallery-${index}.jpg.${index === 1 || index === 4 ? 'jpg' : 'jpeg'}`}
                   alt={`Memory ${index}`}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  style={{ objectPosition: index === 4 ? 'center 70%' : 'center' }}
                   whileHover={{ scale: 1.1 }}
                 />
 
@@ -337,39 +338,7 @@ export function UnlockedContent({ recipientName, personalMessage, audioUrl }: Un
           </div>
         </motion.div>
 
-        {/* Special Touch with animation */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.8, duration: 0.8 }}
-          className="text-center"
-        >
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="inline-flex items-center gap-4 bg-gradient-to-r from-rose/15 via-gold/15 to-rose/15 px-10 py-6 rounded-full border-2 border-gold/40 shadow-xl cursor-pointer"
-          >
-            <motion.div
-              animate={{ rotate: [0, 360] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-            >
-              <Gift className="w-6 h-6 text-rose" />
-            </motion.div>
-            <p className="text-base text-charcoal/80" style={{ fontFamily: 'Manrope, sans-serif', fontWeight: 500 }}>
-              More surprises await on your special day
-            </p>
-            <motion.div
-              animate={{
-                scale: [1, 1.2, 1],
-                rotate: [0, 180, 360]
-              }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
-              <Sparkles className="w-6 h-6 text-gold" />
-            </motion.div>
-          </motion.div>
-        </motion.div>
-
-        {/* NEXT BUTTON - NEW! */}
+        {/* NEXT BUTTON - removed 'More surprises' section */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}

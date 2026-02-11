@@ -99,11 +99,21 @@ export function TeaserStage({ onContinue }: TeaserStageProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.6 }}
-          className="text-4xl sm:text-5xl md:text-6xl mb-12 bg-gradient-to-r from-rose via-rose to-gold bg-clip-text text-transparent leading-relaxed pb-2 pr-4"
-          style={{ fontFamily: 'Fraunces, serif', fontWeight: 700 }}
+          className="text-3xl sm:text-4xl md:text-5xl mb-12 text-charcoal/80 leading-relaxed"
+          style={{ fontFamily: 'Newsreader, serif', fontWeight: 400 }}
         >
-          There's more! ✨
+          I just want to ask you something... 💕
         </motion.h2>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.7, duration: 0.6 }}
+          className="text-xl sm:text-2xl mb-12 text-charcoal/60 italic"
+          style={{ fontFamily: 'Newsreader, serif' }}
+        >
+          Since Valentine's is coming up...
+        </motion.p>
 
         {/* Tap to continue button */}
         <motion.button
@@ -138,7 +148,7 @@ export function TeaserStage({ onContinue }: TeaserStageProps) {
               <Sparkles className="w-6 h-6" />
             </motion.div>
             <span className="text-xl font-semibold" style={{ fontFamily: 'Manrope, sans-serif' }}>
-              Tap to Continue
+              Click to Continue
             </span>
             <motion.div
               animate={{
