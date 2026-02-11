@@ -366,7 +366,7 @@ export function ProposalStage({ recipientName = "My Love" }: ProposalStageProps)
                             className="mb-8 flex justify-center"
                         >
                             <img
-                                src="https://media.tenor.com/rSaC0U0A4H4AAAAC/baby-yoda-happy.gif"
+                                src="https://i.pinimg.com/originals/d4/ce/51/d4ce51d91979d15735464e9abc9db878.gif"
                                 alt="Baby Yoda celebrating"
                                 className="w-64 h-64 rounded-3xl shadow-2xl border-4 border-gold/40"
                             />
