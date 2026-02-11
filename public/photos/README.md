@@ -8,24 +8,38 @@ Add your photos here for the birthday celebration page!
 
 ### Background Photos (10 photos)
 These will appear scattered in the background behind the unlocked content:
-- `bg-1.jpg` through `bg-10.jpg`
+- Put them in: `public/photos/bg/`
+- Name them: `1.jpg` through `10.jpg`
 - Recommended size: 600-800px width
 - These will be slightly visible behind the content
 
 ### Gallery Photos (6 photos)
 These will appear in the main photo grid:
-- `gallery-1.jpg` through `gallery-6.jpg`
+- Put them in: `public/photos/gallery/`
+- Name them: `1.jpg` through `6.jpg`
 - Recommended size: 600-800px (square works best)
 - These are the main photos displayed prominently
 
+## Folder Structure:
+
+```
+public/photos/
+├── bg/
+│   ├── 1.jpg
+│   ├── 2.jpg
+│   ├── ...
+│   └── 10.jpg
+└── gallery/
+    ├── 1.jpg
+    ├── 2.jpg
+    ├── ...
+    └── 6.jpg
+```
+
 ## How to add your photos:
 
-1. **Name your photos** following the naming above
-   - Background: `bg-1.jpg`, `bg-2.jpg`, `bg-3.jpg`, etc.
-   - Gallery: `gallery-1.jpg`, `gallery-2.jpg`, etc.
-
-2. **Copy them** to this folder: `public/photos/`
-
+1. **Copy background photos** to `public/photos/bg/` and name them `1.jpg` through `10.jpg`
+2. **Copy gallery photos** to `public/photos/gallery/` and name them `1.jpg` through `6.jpg`
 3. **Supported formats**: JPG, PNG, WEBP
 
 ## Tips:

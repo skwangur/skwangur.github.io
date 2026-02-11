@@ -37,18 +37,18 @@ export function UnlockedContent({ recipientName, personalMessage, audioUrl }: Un
     }
   }, [audioUrl]);
 
-  // Background photos - replace these with your actual photo paths
+  // Background photos - using your uploaded photos from /BG folder
   const photos = [
-    '/photos/bg-1.jpg',
-    '/photos/bg-2.jpg',
-    '/photos/bg-3.jpg',
-    '/photos/bg-4.jpg',
-    '/photos/bg-5.jpg',
-    '/photos/bg-6.jpg',
-    '/photos/bg-7.jpg',
-    '/photos/bg-8.jpg',
-    '/photos/bg-9.jpg',
-    '/photos/bg-10.jpg',
+    '/BG/bg-1.jpg.jpeg',
+    '/BG/bg-2.jpg.jpeg',
+    '/BG/bg-3.jpg.jpg',
+    '/BG/bg-4.jpg.jpeg',
+    '/BG/bg-5.jpg.jpeg',
+    '/BG/bg-6.jpg.jpeg',
+    '/BG/bg-7.jpg.jpeg',
+    '/BG/bg-8.jpg.jpeg',
+    '/BG/bg-9.jpg.jpeg',
+    '/BG/bg-10.jpg.jpeg',
   ];
 
   // Custom captions for gallery photos - EDIT THESE to personalize!
@@ -316,7 +316,7 @@ export function UnlockedContent({ recipientName, personalMessage, audioUrl }: Un
                 className="aspect-square rounded-3xl bg-gradient-to-br from-blush/40 to-cream/60 border-2 border-gold/30 shadow-[0_6px_30px_rgba(0,0,0,0.08)] cursor-pointer overflow-hidden group relative"
               >
                 <motion.img
-                  src={`/photos/gallery-${index}.jpg`}
+                  src={`/Gallery/gallery-${index}.jpg.${index === 1 || index === 4 ? 'jpg' : 'jpeg'}`}
                   alt={`Memory ${index}`}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   whileHover={{ scale: 1.1 }}
