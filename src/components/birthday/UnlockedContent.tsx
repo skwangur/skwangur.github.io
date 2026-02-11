@@ -54,11 +54,11 @@ export function UnlockedContent({ recipientName, personalMessage, audioUrl }: Un
   // Custom captions for gallery photos - EDIT THESE to personalize!
   const galleryCaptions = [
     'First Date 💕',
-    'Our Adventure',
-    'Laughter Together',
-    'Sweet Moments',
-    'Making Memories',
-    'Forever Us ❤️',
+    'First Movie Date 🎬',
+    'Meeting My Parents',
+    'Meeting Your Parents',
+    'Before You Start Working',
+    'My Birthday ❤️',
   ];
 
   // Collage layout: random positions, sizes, and rotations for organic feel
@@ -319,7 +319,7 @@ export function UnlockedContent({ recipientName, personalMessage, audioUrl }: Un
                   src={`/Gallery/gallery-${index}.jpg.${index === 1 || index === 4 ? 'jpg' : 'jpeg'}`}
                   alt={`Memory ${index}`}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  style={{ objectPosition: index === 4 ? 'center 70%' : 'center' }}
+                  style={{ objectPosition: index === 4 ? 'center 30%' : 'center' }}
                   whileHover={{ scale: 1.1 }}
                 />
 
