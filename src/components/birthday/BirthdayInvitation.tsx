@@ -12,37 +12,38 @@ const birthdayData = {
   date: "February 5",
   dayOfWeek: "Thursday",
   year: 2025,
-  venue: "SM Megamall",
-  address: "123 Celebration Lane, Downtown",
+  venue: "Genki Sushi, SM Megamall",
+  address: "SM Megamall, Mandaluyong",
+  pickupLocation: "San Miguel Logistics",
   activities: [
     {
-      time: "2:00 PM",
-      title: "Arrival & Welcome",
-      description: "Gather with loved ones for an afternoon of celebration",
+      time: "5:30 PM",
+      title: "Pick You Up",
+      description: "Sunduin kita sa work mo sa San Miguel Logistics.\nThe night starts the moment I see you.",
       icon: "star" as const,
     },
     {
-      time: "3:00 PM",
-      title: "Afternoon Tea",
-      description: "Enjoy delicate pastries and refreshments",
+      time: "7:00 PM",
+      title: "Dinner at Genki Sushi",
+      description: "Good food, good laughs, and real conversations.\nJust us enjoying the moment.",
       icon: "coffee" as const,
     },
     {
-      time: "4:30 PM",
-      title: "Music & Dancing",
-      description: "Dance to your favorite songs",
+      time: "8:00 PM",
+      title: "Photobooth Memories",
+      description: "Let's capture this night — stolen smiles and silly poses included.",
       icon: "music" as const,
     },
     {
-      time: "6:00 PM",
-      title: "Birthday Cake",
-      description: "Make a wish and celebrate",
+      time: "9:00 PM",
+      title: "Secret Locked Message",
+      description: "A message waiting just for you.\nSomething I've been meaning to say...",
       icon: "cake" as const,
     },
   ],
   password: "sweetheart",
   recipientName: "My Darling",
-  personalMessage: `On this special day, I wanted to create something as beautiful as you are.\n\nEvery moment with you is a celebration, but today is extra special because it's the day the world was blessed with your presence.\n\nGet ready for an afternoon filled with love, laughter, and memories we'll treasure forever.\n\nHappy Birthday, my love. ❤️`,
+  personalMessage: `On this special day, I wanted to create something as beautiful as you are.\n\nEvery moment with you is a celebration, but today is extra special because it's the day the world was blessed with your presence.\n\nGet ready for a night filled with love, laughter, and memories we'll treasure forever.\n\nHappy Birthday, my love. ❤️`,
 };
 
 export function BirthdayInvitation() {
@@ -91,6 +92,7 @@ export function BirthdayInvitation() {
                   <LocationCard
                     venue={birthdayData.venue}
                     address={birthdayData.address}
+                    pickupLocation={birthdayData.pickupLocation}
                   />
 
                   <PasswordInput
