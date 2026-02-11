@@ -43,7 +43,7 @@ const birthdayData = {
   ],
   password: "Toddler",
   passwordHint: "Unang tawag ko sayo",
-  recipientName: "Nicole lang",
+  recipientName: "Nicole",
   personalMessage: `Happiest Birthday, Nicole! I hope you never lose your smile, even when the world gets really tough.`,
   audioUrl: "/birthday-audio.m4a",
 };
