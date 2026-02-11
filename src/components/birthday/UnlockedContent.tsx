@@ -135,12 +135,74 @@ export function UnlockedContent({ recipientName, personalMessage, audioUrl }: Un
         <div className="absolute inset-0 bg-gradient-to-br from-cream/75 via-blush/70 to-cream/80 backdrop-blur-[1px]" />
       </div>
 
-      {/* Audio Player UI - Hidden, will show in message area */}
+      {/* Audio Player UI */}
       {audioUrl && (
-        <audio ref={audioRef} loop onEnded={() => setIsPlaying(false)}>
-          <source src={audioUrl} type="audio/m4a" />
-          <source src={audioUrl} type="audio/mpeg" />
-        </audio>
+        <>
+          <audio ref={audioRef} loop onEnded={() => setIsPlaying(false)}>
+            <source src={audioUrl} type="audio/m4a" />
+            <source src={audioUrl} type="audio/mpeg" />
+          </audio>
+
+          {/* Floating Audio Player */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.5, duration: 0.8 }}
+            className="fixed bottom-8 right-8 z-50"
+          >
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={toggleAudio}
+              className="group relative"
+            >
+              <motion.div
+                animate={{
+                  scale: isPlaying ? [1, 1.2, 1] : 1,
+                  opacity: isPlaying ? [0.5, 0.8, 0.5] : 0.3,
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: isPlaying ? Infinity : 0,
+                }}
+                className="absolute inset-0 bg-gradient-to-r from-rose/40 to-gold/40 rounded-full blur-xl"
+              />
+
+              <div className="relative bg-gradient-to-r from-rose to-rose/90 text-white p-4 rounded-full shadow-2xl border-2 border-white/50 flex items-center gap-3">
+                {isPlaying ? (
+                  <Pause className="w-6 h-6" fill="white" />
+                ) : (
+                  <Play className="w-6 h-6" fill="white" />
+                )}
+
+                {isPlaying && (
+                  <div className="flex items-center gap-1">
+                    {[...Array(4)].map((_, i) => (
+                      <motion.div
+                        key={i}
+                        animate={{
+                          height: ['8px', '20px', '8px'],
+                        }}
+                        transition={{
+                          duration: 0.6,
+                          repeat: Infinity,
+                          delay: i * 0.1,
+                        }}
+                        className="w-1 bg-white rounded-full"
+                      />
+                    ))}
+                  </div>
+                )}
+
+                <span className="text-sm font-semibold" style={{ fontFamily: 'Manrope, sans-serif' }}>
+                  {isPlaying ? 'Playing...' : 'Play Message'}
+                </span>
+
+                <Heart className="w-5 h-5" fill="white" />
+              </div>
+            </motion.button>
+          </motion.div>
+        </>
       )}
 
       <motion.div

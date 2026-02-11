@@ -16,6 +16,8 @@ export function ProposalStage({ recipientName = "My Love" }: ProposalStageProps)
     const [answered, setAnswered] = useState(false);
     const [tapEffects, setTapEffects] = useState<TapEffect[]>([]);
     const [noButtonPosition, setNoButtonPosition] = useState({ x: 0, y: 0 });
+    const [noAttempts, setNoAttempts] = useState(0);
+    const [showAutoMessage, setShowAutoMessage] = useState(false);
 
     const handleTap = (e: React.MouseEvent) => {
         const newTap: TapEffect = {
@@ -36,10 +38,18 @@ export function ProposalStage({ recipientName = "My Love" }: ProposalStageProps)
     };
 
     const handleNoHover = () => {
-        // Move "No" button to random position
-        const randomX = Math.random() * 200 - 100;
-        const randomY = Math.random() * 200 - 100;
-        setNoButtonPosition({ x: randomX, y: randomY });
+        const newAttempts = noAttempts + 1;
+        setNoAttempts(newAttempts);
+
+        if (newAttempts >= 3) {
+            // After 3 attempts, show auto message
+            setShowAutoMessage(true);
+        } else {
+            // Move "No" button to random position
+            const randomX = Math.random() * 200 - 100;
+            const randomY = Math.random() * 200 - 100;
+            setNoButtonPosition({ x: randomX, y: randomY });
+        }
     };
 
     return (
@@ -206,57 +216,103 @@ export function ProposalStage({ recipientName = "My Love" }: ProposalStageProps)
                             </motion.h2>
                         </motion.div>
 
-                        {/* Buttons */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.6, duration: 0.6 }}
-                            className="flex flex-col sm:flex-row gap-6 justify-center items-center mt-16"
-                        >
-                            {/* Yes button */}
-                            <motion.button
-                                whileHover={{ scale: 1.1 }}
-                                whileTap={{ scale: 0.95 }}
-                                onClick={(e) => {
-                                    e.stopPropagation();
-                                    handleYes();
-                                }}
-                                className="relative group"
+                        {/* Conditional rendering based on attempts */}
+                        {showAutoMessage ? (
+                            /* Auto message after 3 No attempts */
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ duration: 0.8 }}
+                                className="mt-16 text-center"
                             >
-                                <motion.div
+                                <motion.h2
                                     animate={{
-                                        scale: [1, 1.3, 1],
-                                        opacity: [0.5, 0.8, 0.5],
+                                        scale: [1, 1.05, 1],
                                     }}
                                     transition={{
                                         duration: 2,
                                         repeat: Infinity,
                                     }}
-                                    className="absolute inset-0 bg-rose/40 rounded-full blur-xl"
-                                />
-                                <div className="relative bg-gradient-to-r from-rose to-rose/90 text-white px-16 py-6 rounded-full shadow-2xl border-4 border-white/70 text-2xl sm:text-3xl font-bold overflow-visible"
+                                    className="text-4xl sm:text-5xl md:text-6xl text-rose mb-8"
+                                    style={{ fontFamily: 'Fraunces, serif', fontWeight: 700 }}
+                                >
+                                    You will always be my Valentine 💕
+                                </motion.h2>
+
+                                <motion.p
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ delay: 0.5 }}
+                                    className="text-xl sm:text-2xl text-charcoal/70 mb-4"
+                                    style={{ fontFamily: 'Newsreader, serif' }}
+                                >
+                                    No need to answer... 😊
+                                </motion.p>
+
+                                <motion.p
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ delay: 0.8 }}
+                                    className="text-lg sm:text-xl text-charcoal/60"
+                                    style={{ fontFamily: 'Newsreader, serif', fontStyle: 'italic' }}
+                                >
+                                    Just screenshot this! 📸
+                                </motion.p>
+                            </motion.div>
+                        ) : (
+                            /* Buttons */
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.6, duration: 0.6 }}
+                                className="flex flex-col sm:flex-row gap-6 justify-center items-center mt-16"
+                            >
+                                {/* Yes button */}
+                                <motion.button
+                                    whileHover={{ scale: 1.1 }}
+                                    whileTap={{ scale: 0.95 }}
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        handleYes();
+                                    }}
+                                    className="relative group"
+                                >
+                                    <motion.div
+                                        animate={{
+                                            scale: [1, 1.3, 1],
+                                            opacity: [0.5, 0.8, 0.5],
+                                        }}
+                                        transition={{
+                                            duration: 2,
+                                            repeat: Infinity,
+                                        }}
+                                        className="absolute inset-0 bg-rose/40 rounded-full blur-xl"
+                                    />
+                                    <div className="relative bg-gradient-to-r from-rose to-rose/90 text-white px-16 py-6 rounded-full shadow-2xl border-4 border-white/70 text-2xl sm:text-3xl font-bold overflow-visible"
+                                        style={{ fontFamily: 'Manrope, sans-serif' }}
+                                    >
+                                        <span className="inline-block">Yes! 💖</span>
+                                    </div>
+                                </motion.button>
+
+                                {/* No button (runs away) */}
+                                <motion.button
+                                    whileHover={{ scale: 1.05 }}
+                                    onMouseEnter={handleNoHover}
+                                    onClick={(e) => e.stopPropagation()}
+                                    animate={{
+                                        x: noButtonPosition.x,
+                                        y: noButtonPosition.y,
+                                    }}
+                                    transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                                    className="bg-gradient-to-r from-gray-200 to-gray-300 text-gray-600 px-12 py-5 rounded-full shadow-lg border-2 border-gray-400/50 text-xl sm:text-2xl font-semibold"
                                     style={{ fontFamily: 'Manrope, sans-serif' }}
                                 >
-                                    <span className="inline-block">Yes! 💖</span>
-                                </div>
-                            </motion.button>
+                                    No 😢
+                                </motion.button>
+                            </motion.div>
+                        )}
 
-                            {/* No button (runs away) */}
-                            <motion.button
-                                whileHover={{ scale: 1.05 }}
-                                onMouseEnter={handleNoHover}
-                                onClick={(e) => e.stopPropagation()}
-                                animate={{
-                                    x: noButtonPosition.x,
-                                    y: noButtonPosition.y,
-                                }}
-                                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                                className="bg-gradient-to-r from-gray-200 to-gray-300 text-gray-600 px-12 py-5 rounded-full shadow-lg border-2 border-gray-400/50 text-xl sm:text-2xl font-semibold"
-                                style={{ fontFamily: 'Manrope, sans-serif' }}
-                            >
-                                No 😢
-                            </motion.button>
-                        </motion.div>
 
                         {/* Hint text */}
                         <motion.p
