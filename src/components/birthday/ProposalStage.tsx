@@ -214,6 +214,17 @@ export function ProposalStage({ recipientName = "My Love" }: ProposalStageProps)
                             >
                                 Valentine? 💕
                             </motion.h2>
+
+                            {/* Hint text */}
+                            <motion.p
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ delay: 0.8 }}
+                                className="text-lg sm:text-xl text-charcoal/60 italic mb-4"
+                                style={{ fontFamily: 'Newsreader, serif' }}
+                            >
+                                You can take your time to answer... 💭
+                            </motion.p>
                         </motion.div>
 
                         {/* Conditional rendering based on attempts */}
@@ -236,7 +247,7 @@ export function ProposalStage({ recipientName = "My Love" }: ProposalStageProps)
                                     className="text-4xl sm:text-5xl md:text-6xl text-rose mb-8"
                                     style={{ fontFamily: 'Fraunces, serif', fontWeight: 700 }}
                                 >
-                                    You will always be my Valentine 💕
+                                    Awww, you’ll always be my Valentine. I just hope you know how special you are.
                                 </motion.h2>
 
                             </motion.div>
@@ -347,17 +358,18 @@ export function ProposalStage({ recipientName = "My Love" }: ProposalStageProps)
                             </motion.div>
                         ))}
 
-                        {/* Success message */}
+                        {/* Yoda celebrating GIF */}
                         <motion.div
-                            animate={{
-                                rotate: [0, 5, -5, 0],
-                            }}
-                            transition={{
-                                duration: 0.5,
-                                delay: 0.5,
-                            }}
+                            initial={{ scale: 0, rotate: -20 }}
+                            animate={{ scale: 1, rotate: 0 }}
+                            transition={{ type: 'spring', bounce: 0.6, duration: 0.8 }}
+                            className="mb-8 flex justify-center"
                         >
-                            <PartyPopper className="w-32 h-32 text-gold mx-auto mb-8" />
+                            <img
+                                src="https://media.tenor.com/rSaC0U0A4H4AAAAC/baby-yoda-happy.gif"
+                                alt="Baby Yoda celebrating"
+                                className="w-64 h-64 rounded-3xl shadow-2xl border-4 border-gold/40"
+                            />
                         </motion.div>
 
                         <motion.h1
@@ -377,7 +389,7 @@ export function ProposalStage({ recipientName = "My Love" }: ProposalStageProps)
                             className="text-3xl sm:text-4xl text-charcoal/80 mb-8"
                             style={{ fontFamily: 'Newsreader, serif' }}
                         >
-                            I'm the luckiest person in the world! ❤️
+                            See you on Valentine’s Day! Can’t wait to make it an amazing day for us!
                         </motion.p>
 
                         <motion.div
@@ -390,7 +402,7 @@ export function ProposalStage({ recipientName = "My Love" }: ProposalStageProps)
                                 style={{ fontFamily: 'Newsreader, serif' }}
                             >
                                 Happy Valentine's Day, {recipientName}! 💕<br />
-                                You've made this the most special day ever.
+                                You made me the Luckiest Person!.
                             </p>
                         </motion.div>
 
