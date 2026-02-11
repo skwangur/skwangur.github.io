@@ -6,10 +6,11 @@ import { Input } from '@/components/ui/input';
 interface PasswordInputProps {
   onCorrectPassword: () => void;
   correctPassword: string;
+  passwordHint?: string;
   delay?: number;
 }
 
-export function PasswordInput({ onCorrectPassword, correctPassword, delay = 0.3 }: PasswordInputProps) {
+export function PasswordInput({ onCorrectPassword, correctPassword, passwordHint, delay = 0.3 }: PasswordInputProps) {
   const [password, setPassword] = useState('');
   const [isShaking, setIsShaking] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
@@ -18,7 +19,7 @@ export function PasswordInput({ onCorrectPassword, correctPassword, delay = 0.3 
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (password.toLowerCase() === correctPassword.toLowerCase()) {
       setIsUnlocking(true);
       setTimeout(() => onCorrectPassword(), 800);
@@ -52,12 +53,12 @@ export function PasswordInput({ onCorrectPassword, correctPassword, delay = 0.3 
               <Lock className="w-8 h-8 sm:w-10 sm:h-10 text-rose" />
             )}
           </motion.div>
-          
-          <motion.p 
+
+          <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: delay + 0.2 }}
-            className="text-xs sm:text-sm text-charcoal/70 max-w-xs mx-auto mb-3 sm:mb-4 px-4" 
+            className="text-xs sm:text-sm text-charcoal/70 max-w-xs mx-auto mb-3 sm:mb-4 px-4"
             style={{ fontFamily: 'Newsreader, serif' }}
           >
             Enter the secret password to unlock your surprise
@@ -100,17 +101,17 @@ export function PasswordInput({ onCorrectPassword, correctPassword, delay = 0.3 
                   className="bg-gradient-to-br from-rose/10 to-gold/10 px-4 sm:px-6 py-3 sm:py-4 rounded-xl border border-gold/30 inline-block"
                 >
                   <p className="text-[10px] sm:text-xs text-charcoal/60 mb-1" style={{ fontFamily: 'Manrope, sans-serif' }}>
-                    Password:
+                    {passwordHint ? 'Hint:' : 'Password:'}
                   </p>
                   <p className="text-base sm:text-lg font-medium text-rose" style={{ fontFamily: 'Fraunces, serif' }}>
-                    {correctPassword}
+                    {passwordHint || correctPassword}
                   </p>
                 </motion.div>
               </motion.div>
             )}
           </AnimatePresence>
         </div>
-        
+
         <motion.div
           animate={{
             x: isShaking ? [0, -10, 10, -10, 10, 0] : 0,
@@ -127,7 +128,7 @@ export function PasswordInput({ onCorrectPassword, correctPassword, delay = 0.3 
               className="absolute inset-0 bg-rose/20 rounded-xl blur-xl -z-10"
             />
           )}
-          
+
           <Input
             type="password"
             value={password}
@@ -139,8 +140,8 @@ export function PasswordInput({ onCorrectPassword, correctPassword, delay = 0.3 
             className={`
               w-full px-4 sm:px-6 py-4 sm:py-6 text-center text-base sm:text-lg rounded-xl
               bg-white/90 backdrop-blur-sm border-2 transition-all duration-300
-              ${isFocused 
-                ? 'border-rose shadow-[0_0_0_4px_rgba(199,123,127,0.15),0_8px_32px_rgba(199,123,127,0.2)] outline-none' 
+              ${isFocused
+                ? 'border-rose shadow-[0_0_0_4px_rgba(199,123,127,0.15),0_8px_32px_rgba(199,123,127,0.2)] outline-none'
                 : 'border-gold/30 shadow-[0_4px_24px_rgba(0,0,0,0.06)]'
               }
               ${isShaking ? 'border-red-400 bg-red-50' : ''}
@@ -149,7 +150,7 @@ export function PasswordInput({ onCorrectPassword, correctPassword, delay = 0.3 
             style={{ fontFamily: 'Newsreader, serif' }}
           />
         </motion.div>
-        
+
         <motion.button
           type="submit"
           disabled={isUnlocking}
@@ -173,7 +174,7 @@ export function PasswordInput({ onCorrectPassword, correctPassword, delay = 0.3 
             }}
             className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
           />
-          
+
           <span className="flex items-center justify-center gap-2 sm:gap-3 relative z-10 text-sm sm:text-base">
             <motion.div
               animate={{
@@ -187,7 +188,7 @@ export function PasswordInput({ onCorrectPassword, correctPassword, delay = 0.3 
           </span>
         </motion.button>
       </form>
-      
+
       {isShaking && (
         <motion.p
           initial={{ opacity: 0, y: -10 }}

@@ -41,7 +41,8 @@ const birthdayData = {
       icon: "cake" as const,
     },
   ],
-  password: "sweetheart",
+  password: "Toddler",
+  passwordHint: "Unang tawag ko sayo",
   recipientName: "My Darling",
   personalMessage: `On this special day, I wanted to create something as beautiful as you are.\n\nEvery moment with you is a celebration, but today is extra special because it's the day the world was blessed with your presence.\n\nGet ready for a night filled with love, laughter, and memories we'll treasure forever.\n\nHappy Birthday, my love. ❤️`,
 };
@@ -98,6 +99,7 @@ export function BirthdayInvitation() {
                   <PasswordInput
                     onCorrectPassword={() => setIsUnlocked(true)}
                     correctPassword={birthdayData.password}
+                    passwordHint={birthdayData.passwordHint}
                   />
                 </div>
 
